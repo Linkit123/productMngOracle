@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 public interface ProductService {
     List<Product> getAllProduct();
     
-    void addProduct(Product product);
+    boolean addProduct(Product product);
     
     void updateProduct(Product product, int id);
     
-    void deleteProduct(int id);
+    boolean deleteProduct(int id);
     
     List<Product> searchProduct(String productName, int pageIndex, int pageSize);
 }

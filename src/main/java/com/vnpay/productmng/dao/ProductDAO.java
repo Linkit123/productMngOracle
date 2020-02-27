@@ -19,11 +19,11 @@ import org.springframework.data.repository.CrudRepository;
 public interface ProductDAO{
     List<Product> getAllProduct();
     
-    void addProduct(Product product);
+    boolean addProduct(Product product);
     
     void updateProduct(Product product);
     
-    void deleteProductById(int id);
+    boolean deleteProductById(int id);
     
     List<Product> searchProduct(String productName, int pageIndex, int pageSize);
 }

@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void addProduct(Product product) {
-        productDAO.addProduct(product);
+    public boolean addProduct(Product product) {
+       return productDAO.addProduct(product);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProduct(int id) {
-        productDAO.deleteProductById(id);
+    public boolean deleteProduct(int id) {
+       return productDAO.deleteProductById(id);
     }
 
     @Override

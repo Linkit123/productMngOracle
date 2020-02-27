@@ -35,9 +35,9 @@ public class ProductController {
         return productService.getAllProduct();
     }
 
-    @RequestMapping(value = "/product", method = RequestMethod.PUT)
-    public void addProduct(@RequestBody Product product) {
-        productService.addProduct(product);
+    @RequestMapping(value = "/add_product", method = RequestMethod.POST)
+    public boolean addProduct(@RequestBody Product product) {
+       return productService.addProduct(product);
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.POST)
@@ -46,8 +46,8 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.DELETE)
-    public void deleteProduct(@RequestParam(value = "id", required = false) int id) {
-        productService.deleteProduct(id);
+    public boolean deleteProduct(@RequestParam(value = "id", required = false) int id) {
+       return productService.deleteProduct(id);
     }
 
     @RequestMapping(value = "/products/_search_by_name", method = RequestMethod.GET)

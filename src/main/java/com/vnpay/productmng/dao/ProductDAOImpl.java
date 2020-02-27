@@ -83,10 +83,11 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public void addProduct(Product product) {
+    public boolean addProduct(Product product) {
         CallableStatement stmt = null;
         ResultSet rset = null;
         Connection connection = null;
+        boolean status = false;
         try {
             connection = dataSource.getConnection();
         } catch (SQLException ex) {
@@ -108,6 +109,7 @@ public class ProductDAOImpl implements ProductDAO {
             stmt.setInt(i++, product.getPrice());
             
             stmt.executeQuery();
+            status = true;
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, "fail to insert", ex);
         } finally {
@@ -118,6 +120,7 @@ public class ProductDAOImpl implements ProductDAO {
                 Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, "fail to close connection", ex);
             }
         }
+        return status;
     }
 
     @Override
@@ -158,7 +161,8 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public void deleteProductById(int id) {
+    public boolean deleteProductById(int id) {
+        boolean status = false;
         CallableStatement stmt = null;
         ResultSet rset = null;
         Connection connection = null;
@@ -176,6 +180,7 @@ public class ProductDAOImpl implements ProductDAO {
             stmt.setInt(i, id);
             
             stmt.executeQuery();
+            status = true;
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, "fail to insert", ex);
         } finally {
@@ -186,6 +191,7 @@ public class ProductDAOImpl implements ProductDAO {
                 Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, "fail to close connection", ex);
             }
         }
+        return status;
     }
 
     @Override
