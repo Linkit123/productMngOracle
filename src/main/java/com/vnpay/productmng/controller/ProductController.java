@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api")
 public class ProductController {
 
-    @Autowired
+    @Autowired //test commit
     private ProductService productService;
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
